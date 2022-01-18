@@ -1,0 +1,36 @@
+h1{
+    text-align: center;
+    color: blueviolet;
+    size: 20px;
+}
+.subtitulo{
+    text-align: center;
+    color: blueviolet;
+    size: 10px;
+    padding: 2px;
+}
+.contenedor-videos{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 1100px;
+    
+}
+.card{
+    box-shadow: 0px 1px 10px rgba(0, 0,0, 0.2);
+    width: 100%;
+    margin: 20px;
+    border-radius: 6px;
+    overflow: hidden;
+    background-color: #fff;
+    cursor:pointer;
+ 
+}
+.card:hover{
+    box-shadow: 5px 5px 20px rgba(0, 0,0, 0.4);
+    transform: translateY(-3%);
+}
+.text{
+    size: 9px;
+    color: dodgerblue;
+}
