@@ -8,7 +8,7 @@ import { Component, ElementRef, OnInit, QueryList, ViewChild } from '@angular/co
 
 export class VideosComponent implements OnInit {
 
-  @ViewChild('videoPlay', { static: false }) videoPlay: QueryList<any>;
+  @ViewChild('videoPlay', { static: false }) videoPlay: ElementRef;
 
   videoClicked = false;
 
@@ -19,18 +19,18 @@ export class VideosComponent implements OnInit {
   }
 
   over(id:number): void {
-    console.log("Hover activado", id);
-    this.videoClicked = true;
-     const arreglo=this.videoPlay.toArray()
-     console.log(arreglo)
-    // this.videoPlay.forEach((elemento:ElementRef) => {
-    //   console.log(elemento.nativeElement);
-    // });
-    // this.videoPlay.nativeElement.play();
-    // this.videoPlay.nativeElement.
+    const video=this.videoPlay.nativeElement;
+
+    console.log("Hover activado", id); 
+    video.muted=true;
+    video.play(); 
 
   }
+
   out() {
+    const video=this.videoPlay.nativeElement;
+    console.log("toy juera")
+    video.pause();
 
   }
 }
