@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, QueryList, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-videos',
@@ -8,8 +8,9 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 export class VideosComponent implements OnInit {
 
-  // @ViewChild('videoPlay',{static:false}) videoPlay:ElementRef;
-  videoClicked=false;
+  @ViewChild('videoPlay', { static: false }) videoPlay: QueryList<any>;
+
+  videoClicked = false;
 
 
   constructor() { }
@@ -17,13 +18,19 @@ export class VideosComponent implements OnInit {
   ngOnInit(): void {
   }
 
- over():void{
-  console.log("Hover activado");
-  this.videoClicked=true;
-  // this.videoPlay.nativeElement.play();
+  over(id:number): void {
+    console.log("Hover activado", id);
+    this.videoClicked = true;
+     const arreglo=this.videoPlay.toArray()
+     console.log(arreglo)
+    // this.videoPlay.forEach((elemento:ElementRef) => {
+    //   console.log(elemento.nativeElement);
+    // });
+    // this.videoPlay.nativeElement.play();
+    // this.videoPlay.nativeElement.
 
- }
- out(){
+  }
+  out() {
 
- }
+  }
 }
