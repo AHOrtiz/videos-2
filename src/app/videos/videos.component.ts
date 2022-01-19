@@ -9,8 +9,8 @@ import { Component, ElementRef, OnInit, QueryList, ViewChild } from '@angular/co
 export class VideosComponent implements OnInit {
 
   @ViewChild('videoPlay', { static: false }) videoPlay: ElementRef;
-
-  videoClicked = false;
+  
+  public videoSeleccionado:number;
 
 
   constructor() { }
@@ -19,6 +19,7 @@ export class VideosComponent implements OnInit {
   }
 
   over(id:number): void {
+    this.videoSeleccionado=id;
     const video=this.videoPlay.nativeElement;
 
     console.log("Hover activado", id); 

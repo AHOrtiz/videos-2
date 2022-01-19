@@ -12,11 +12,23 @@
   <h1>Soporte tecnico</h1>
   <h3 class="subtitulo">Videos tutoriales</h3>
 
+  <div *ngIf="videoSeleccionado==0;then contenedor else other_content"></div>
+  <ng-template #contenedor>
+     <div>
+       <label for="">Video 1</label>
+     </div>
+  </ng-template>
+  <ng-template #other_content>
+    <div>
+       <label for="">video 3</label>
+    </div>
+  </ng-template>
+
   <div class="contenedor-videos">
 
     <div class="card" style="width: 18rem;">
       <video src="https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4" #videoPlay
-        (mouseover)="over(1)" (mouseout)="out()"></video>
+        (mouseover)="over(0)" (mouseout)="out()"></video>
       <div class="card-body">
         <h5 class="card-title" class="text">Cambio de sello mecanico</h5>
         <a href="https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4" class="btn btn-primary ">Ver
@@ -27,14 +39,15 @@
 
 
     <div class="card" style="width: 18rem;">
-      <video src="https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4" controls  ></video>
+      <video src="https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4" controls></video>
       <div class="card-body">
         <h5 class="card-title" class="text">Cambio de sello mecanico</h5>
       </div>
     </div>
 
     <div class="card netflix" style="width: 18rem;">
-      <video src="https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4"(mouseover)="over(2)" #videoPlay></video>
+      <video src="https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4" (mouseover)="over(2)"
+        #videoPlay></video>
       <div class="card-body">
         <h5 class="card-title" class="text">Cambio de sello mecanico</h5>
       </div>
