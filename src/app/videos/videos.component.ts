@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, QueryList, ViewChild } from '@angular/core';
-
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-videos',
   templateUrl: './videos.component.html',
@@ -9,11 +9,12 @@ import { Component, ElementRef, OnInit, QueryList, ViewChild } from '@angular/co
 export class VideosComponent implements OnInit {
 
   @ViewChild('videoPlay', { static: false }) videoPlay: ElementRef;
+  @ViewChild('modalMensaje', { static: false })modalMensaje:ElementRef;
   
   public videoSeleccionado:number;
 
 
-  constructor() { }
+  constructor(private modalService: NgbModal) { }
 
   ngOnInit(): void {
   }
@@ -33,5 +34,12 @@ export class VideosComponent implements OnInit {
     console.log("toy juera")
     video.pause();
 
+  }
+
+  public playVideo(){
+ 
+    this.modalService.open(this.modalMensaje);
+    
+    console.log("Funciono")
   }
 }

@@ -5,13 +5,14 @@ import { AppComponent } from './app.component';
 import { VideosComponent } from './videos/videos.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     VideosComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule,   
     NgbModule
   ],
   providers: [],

@@ -32,8 +32,33 @@ h1{
 }
 .card.netflix:hover{
     width: 25rem !important; 
+    
+  
+}
+.card.netflix{
+    transition: width 1s;
+
 }
 .text{
-    size: 9px;
+    font-size: 16px;
     color: dodgerblue;
+   
+   
+}
+
+.card-body.netflix{
+    display: flex;
+    flex-direction: row;
+}
+
+#netflix{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;    
+   
+}
+.videoModal{
+   
+    width: 100%;
 }
