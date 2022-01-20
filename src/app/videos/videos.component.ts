@@ -8,7 +8,6 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 export class VideosComponent implements OnInit {
 
-  @ViewChild('videoPlay', { static: false }) videoPlay: ElementRef;
   @ViewChild('modalMensaje', { static: false })modalMensaje:ElementRef;
   @ViewChild('playCardNetflix', { static: false})playCardNetflix:ElementRef;
   
@@ -20,22 +19,8 @@ export class VideosComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  over(id:number): void {
-    //this.videoSeleccionado=id;
-    const video=this.videoPlay.nativeElement;
-
-    console.log("Hover activado", id); 
-    video.muted=true;
-    video.play(); 
-
-  }
-  out() {
-    const video=this.videoPlay.nativeElement;
-    console.log("toy juera")
-    video.pause();
-  }
-
-  
+ 
+  //Evento para reproducir el video cuando se pasa el cursor
   overNetflix(){
     const video=this.playCardNetflix.nativeElement;
     video.muted=true;
@@ -47,7 +32,6 @@ export class VideosComponent implements OnInit {
     video.pause();
 
   }
-
 
   //Modal de video 
   public playVideo(){
