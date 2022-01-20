@@ -47,7 +47,6 @@ h1{
     color: cornflowerblue;
     font-weight: 300;
     /* letter-spacing: 2px; */
-
    
 }
 
@@ -72,8 +71,7 @@ h1{
     padding: 0.5rem;
     width: 100%;
     display: block;
-    font-size: 14px;
-  
+    font-size: 14px;  
   
 }
 

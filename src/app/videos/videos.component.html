@@ -13,11 +13,11 @@
   </div>
 </ng-template> -->
 
-<div class="contenedor-videos">
+<div class="contenedor-videos" #contenedorVideos>
 
  
   <div class="card netflix" style="width: 18rem;">
-    <video src="https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4" (mouseover)="overNetflix() "
+    <video src="https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4" (mouseover)="overNetflix(0) "
     #playCardNetflix   (mouseout)="outCardVideo()"></video>
     <div class="card-body "id="netflix">
       <h5 class="card-title" class="text" >Cambio de sello Mecanico y plato en bomba Himp</h5>
@@ -27,7 +27,7 @@
   </div> 
 
   <div class="card netflix" style="width: 18rem;">
-    <video src="https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4" (mouseover)="overNetflix() "
+    <video src="https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4" (mouseover)="overNetflix(1) "
     #playCardNetflix   (mouseout)="outCardVideo()"></video>
     <div class="card-body "id="netflix">
       <h5 class="card-title" class="text" >Cambio de los botones de Ventana Despachadora 24 hrs </h5>
@@ -37,7 +37,7 @@
   </div> 
 
   <div class="card netflix" style="width: 18rem;">
-    <video src="https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4" (mouseover)="overNetflix() "
+    <video src="https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4" (mouseover)="overNetflix(2) "
     #playCardNetflix   (mouseout)="outCardVideo()"></video>
     <div class="card-body "id="netflix">
       <h5 class="card-title" class="text" >Cambio de cargas de medios filtrantes:Arena , Carbon , y Resina</h5>
@@ -47,7 +47,7 @@
   </div> 
 
   <div class="card netflix" style="width: 18rem;">
-    <video src="https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4" (mouseover)="overNetflix() "
+    <video src="https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4" (mouseover)="overNetflix(3) "
     #playCardNetflix   (mouseout)="outCardVideo()"></video>
     <div class="card-body "id="netflix">
       <h5 class="card-title" class="text" >Limpieza de cartuchos de filtros pulidores</h5>
@@ -57,7 +57,7 @@
   </div> 
 
   <div class="card netflix" style="width: 18rem;">
-    <video src="https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4" (mouseover)="overNetflix() "
+    <video src="https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4" (mouseover)="overNetflix(4) "
     #playCardNetflix   (mouseout)="outCardVideo()"></video>
     <div class="card-body "id="netflix">
       <h5 class="card-title" class="text" >Conexion Wifi en equipos automatizados</h5>
@@ -67,7 +67,7 @@
   </div> 
 
   <div class="card netflix" style="width: 18rem;">
-    <video src="https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4" (mouseover)="overNetflix() "
+    <video src="https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4" (mouseover)="overNetflix(5) "
     #playCardNetflix   (mouseout)="outCardVideo()"></video>
     <div class="card-body "id="netflix">
       <h5 class="card-title" class="text" >Funcionamiento de equipo de Agua Alcalina </h5>
@@ -77,7 +77,7 @@
   </div> 
 
   <div class="card netflix" style="width: 18rem;">
-    <video src="https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4" (mouseover)="overNetflix() "
+    <video src="https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4" (mouseover)="overNetflix(6) "
     #playCardNetflix   (mouseout)="outCardVideo()"></video>
     <div class="card-body "id="netflix">
       <h5 class="card-title" class="text" >Operacion de Equipos de Osmosis Inversa</h5>
@@ -87,7 +87,7 @@
   </div> 
 
   <div class="card netflix" style="width: 18rem;">
-    <video src="https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4" (mouseover)="overNetflix() "
+    <video src="https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4" (mouseover)="overNetflix(7) "
     #playCardNetflix   (mouseout)="outCardVideo()"></video>
     <div class="card-body "id="netflix">
       <h5 class="card-title" class="text" >Programacion del filtro Suavizador Automatico</h5>
