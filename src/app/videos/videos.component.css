@@ -35,7 +35,8 @@ h1{
     transform: translateY(-3%);
 }
 .card.netflix:hover{
-    width: 23rem !important;    
+    width: 23rem !important; 
+    height: 22rem !important;   
   
 }
 .card.netflix{

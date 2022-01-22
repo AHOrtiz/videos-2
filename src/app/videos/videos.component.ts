@@ -5,6 +5,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { VideoInterface } from '../interface/video-interface';
 
 @Component({
   selector: 'app-videos',
@@ -19,12 +20,39 @@ export class VideosComponent implements AfterViewInit {
 
   @ViewChild('modalMensaje', { static: false }) modalMensaje: ElementRef;
   //  Aqui se declaro la obtencion del contenedor del HTML
-  @ViewChild('contenedorVideos', { static: false }) contenedorVideos: ElementRef<HTMLElement>;  
-  
+  @ViewChild('contenedorVideos', { static: false }) contenedorVideos: ElementRef<HTMLElement>;
+
   // TODO: Esta variable es para tener las cards del HTML
   private listCardsHTML: NodeListOf<ChildNode>
   // TODO: Esta variable es para tener el video actual
-  private currentVideo: HTMLVideoElement
+  public currentVideo: VideoInterface 
+
+  public ListVideos = [
+    {
+      titulo: "Video 1",
+      url: "https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4"
+    },
+    {
+      titulo: "video 2 ",
+      url: "https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4"
+    },
+    {
+      titulo: "Cambio de sello Mecanico y plato en bomba Himp",
+      url: "https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4"
+    },
+    {
+      titulo: "Cambio de sello Mecanico y plato en bomba Himp",
+      url: "https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4"
+    },
+    {
+      titulo: "Cambio de sello Mecanico y plato en bomba Himp",
+      url: "https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4"
+    },
+    {
+      titulo: "Cambio de sello Mecanico y plato en bomba Himp",
+      url: '/assets/videos/video1.mp4'
+    }
+  ]
 
   /**
    * Se manda a llamar cuando se finaliza de pintar el HTML (en este caso todos los videos)
@@ -32,26 +60,32 @@ export class VideosComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.listCardsHTML = this.contenedorVideos.nativeElement.childNodes
     console.log("Lista de Cards:", this.listCardsHTML);
+    
   }
 
-  
+
   public overNetflix(idVideo: number) {
     console.log("mouseover en video: ", idVideo);
 
     // Se obtienen el nodo de video y se parsea a HTMLVideoElement para poder controlar sus eventos
     const videoHTML: HTMLVideoElement = this.listCardsHTML[idVideo].childNodes[0] as HTMLVideoElement
     console.log("Nodo", videoHTML);
-
+    
+    console.log("Video encontrado",this.ListVideos[idVideo])
     // TODO: Se inicializa la variable para tener el video actual (en este caso esta variable se ocupa cuando se hace el outCardVideo)
-    this.currentVideo = videoHTML
-    this.currentVideo.muted = true;
-    this.currentVideo.play();
+    
+    this.currentVideo.titulo = this.ListVideos[idVideo].titulo;
+    this.currentVideo.url = this.ListVideos[idVideo].url;
+    this.currentVideo.html = videoHTML
+    this.currentVideo.html.muted = true;
+    this.currentVideo.html.play();
+    console.log("video actual", this.currentVideo);
   }
   /**
    * Detectar cuando cursor sale de una card de tipo netflix
    */
   public outCardVideo() {
-    this.currentVideo.pause()
+    this.currentVideo.html.pause()
   }
   /**
    * Abrir una modal cuando seleccionan el icono de reproducir

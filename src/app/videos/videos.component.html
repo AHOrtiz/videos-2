@@ -13,96 +13,25 @@
   </div>
 </ng-template> -->
 
-<div class="contenedor-videos" #contenedorVideos>
+<div class="contenedor-videos" #contenedorVideos >
 
  
-  <div class="card netflix" style="width: 18rem;">
-    <video src="https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4" (mouseover)="overNetflix(0) "
+  <div *ngFor="let videos of ListVideos; let i=index" class="card netflix" style="width: 18rem; height:19rem;">
+    <video src="{{videos.url}}" (mouseover)="overNetflix(i) "
     #playCardNetflix   (mouseout)="outCardVideo()"></video>
     <div class="card-body "id="netflix">
-      <h5 class="card-title" class="text" >Cambio de sello Mecanico y plato en bomba Himp</h5>
+      <h5 class="card-title" class="text" >{{videos.titulo}}</h5>
         <button id="btn--block" class="btn btn-info" type="button" (click)="playVideo()"><span class="fa fa-play-circle  fa-1x"></span> Ver video</button>   
      
     </div>
-  </div> 
-
-  <div class="card netflix" style="width: 18rem;">
-    <video src="https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4" (mouseover)="overNetflix(1) "
-    #playCardNetflix   (mouseout)="outCardVideo()"></video>
-    <div class="card-body "id="netflix">
-      <h5 class="card-title" class="text" >Cambio de los botones de Ventana Despachadora 24 hrs </h5>
-        <button id="btn--block" class="btn btn-info" type="button" (click)="playVideo()"><span class="fa fa-play-circle  fa-1x"></span> Ver video</button>   
-     
-    </div>
-  </div> 
-
-  <div class="card netflix" style="width: 18rem;">
-    <video src="https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4" (mouseover)="overNetflix(2) "
-    #playCardNetflix   (mouseout)="outCardVideo()"></video>
-    <div class="card-body "id="netflix">
-      <h5 class="card-title" class="text" >Cambio de cargas de medios filtrantes:Arena , Carbon , y Resina</h5>
-        <button id="btn--block" class="btn btn-info" type="button" (click)="playVideo()"><span class="fa fa-play-circle  fa-1x"></span> Ver video</button>   
-     
-    </div>
-  </div> 
-
-  <div class="card netflix" style="width: 18rem;">
-    <video src="https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4" (mouseover)="overNetflix(3) "
-    #playCardNetflix   (mouseout)="outCardVideo()"></video>
-    <div class="card-body "id="netflix">
-      <h5 class="card-title" class="text" >Limpieza de cartuchos de filtros pulidores</h5>
-        <button id="btn--block" class="btn btn-info" type="button" (click)="playVideo()"><span class="fa fa-play-circle  fa-1x"></span> Ver video</button>   
-     
-    </div>
-  </div> 
-
-  <div class="card netflix" style="width: 18rem;">
-    <video src="https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4" (mouseover)="overNetflix(4) "
-    #playCardNetflix   (mouseout)="outCardVideo()"></video>
-    <div class="card-body "id="netflix">
-      <h5 class="card-title" class="text" >Conexion Wifi en equipos automatizados</h5>
-        <button id="btn--block" class="btn btn-info" type="button" (click)="playVideo()"><span class="fa fa-play-circle  fa-1x"></span> Ver video</button>   
-     
-    </div>
-  </div> 
-
-  <div class="card netflix" style="width: 18rem;">
-    <video src="https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4" (mouseover)="overNetflix(5) "
-    #playCardNetflix   (mouseout)="outCardVideo()"></video>
-    <div class="card-body "id="netflix">
-      <h5 class="card-title" class="text" >Funcionamiento de equipo de Agua Alcalina </h5>
-        <button id="btn--block" class="btn btn-info" type="button" (click)="playVideo()"><span class="fa fa-play-circle  fa-1x"></span> Ver video</button>   
-     
-    </div>
-  </div> 
-
-  <div class="card netflix" style="width: 18rem;">
-    <video src="https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4" (mouseover)="overNetflix(6) "
-    #playCardNetflix   (mouseout)="outCardVideo()"></video>
-    <div class="card-body "id="netflix">
-      <h5 class="card-title" class="text" >Operacion de Equipos de Osmosis Inversa</h5>
-        <button id="btn--block" class="btn btn-info" type="button" (click)="playVideo()"><span class="fa fa-play-circle  fa-1x"></span> Ver video</button>   
-     
-    </div>
-  </div> 
-
-  <div class="card netflix" style="width: 18rem;">
-    <video src="https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4" (mouseover)="overNetflix(7) "
-    #playCardNetflix   (mouseout)="outCardVideo()"></video>
-    <div class="card-body "id="netflix">
-      <h5 class="card-title" class="text" >Programacion del filtro Suavizador Automatico</h5>
-        <button id="btn--block" class="btn btn-info" type="button" (click)="playVideo()"><span class="fa fa-play-circle  fa-1x"></span> Ver video</button>   
-     
-    </div>
-  </div> 
-  
+  </div>  
 
 </div>
 
 <ng-template #modalMensaje let-modal>
   <div class="modal-header">
       <h4 class="modal-title">
-          <span>Cambio de sello Mecanico y plato en bomba Himp</span>
+          <span>{{currentVideo.titulo}}</span>
       </h4>
       <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
           <span aria-hidden="true">&times;</span>
@@ -110,7 +39,7 @@
   </div>
   <div class="modal-body">
       <p> <span>Descripcion</span> </p>
-      <video class="videoModal" src="https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4" controls></video>
+      <video class="videoModal" src="{{currentVideo.url}}" controls></video>
   </div>
   <div class="modal-footer">
       <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')" >Cerrar</button>
