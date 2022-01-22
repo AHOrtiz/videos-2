@@ -25,7 +25,7 @@ export class VideosComponent implements AfterViewInit {
   // TODO: Esta variable es para tener las cards del HTML
   private listCardsHTML: NodeListOf<ChildNode>
   // TODO: Esta variable es para tener el video actual
-  public currentVideo: VideoInterface 
+  public currentVideo: VideoInterface = new VideoInterface() 
 
   public ListVideos = [
     {
