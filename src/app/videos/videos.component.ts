@@ -6,6 +6,7 @@ import {
 } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { VideoInterface } from '../interface/video-interface';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-videos',
@@ -15,13 +16,18 @@ import { VideoInterface } from '../interface/video-interface';
 
 // Aqui se agrego el ciclo del componente (AfterViewInit) el cual se ejecuta cuando termiana de pintar el HTML
 export class VideosComponent implements AfterViewInit {
-  constructor(private modalService: NgbModal) { }
+  constructor(private modalService: NgbModal, private sanitizer:DomSanitizer) {
+  
+    // this.myTrustedURL=sanitizer.bypassSecurityTrustUrl(this.currentVideo.url)
+
+  }
 
 
   @ViewChild('modalMensaje', { static: false }) modalMensaje: ElementRef;
   //  Aqui se declaro la obtencion del contenedor del HTML
   @ViewChild('contenedorVideos', { static: false }) contenedorVideos: ElementRef<HTMLElement>;
 
+  private  myTrustedURL:string="";
   // TODO: Esta variable es para tener las cards del HTML
   private listCardsHTML: NodeListOf<ChildNode>
   // TODO: Esta variable es para tener el video actual
