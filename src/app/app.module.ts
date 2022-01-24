@@ -4,12 +4,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { VideosComponent } from './videos/videos.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ModalVideoComponent } from './modal-video/modal-video.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    VideosComponent
+    VideosComponent,
+    ModalVideoComponent
   ],
   imports: [
     BrowserModule,   

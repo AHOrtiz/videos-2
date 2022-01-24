@@ -3,7 +3,8 @@ import {
   Component,
   ElementRef,
   ViewChild,
-  OnInit
+  OnInit,
+  TemplateRef
 } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { VideoInterface } from '../interface/video-interface';
@@ -24,7 +25,9 @@ export class VideosComponent implements OnInit, AfterViewInit {
   //  Aqui se declaro la obtencion del contenedor del HTML
   @ViewChild('contenedorVideos', { static: false }) contenedorVideos: ElementRef<HTMLElement>;
 
-  private  myTrustedURL:any;
+  @ViewChild('TemplateBotonVideo', { static: true }) TemplateBotonVideo:TemplateRef<any>;
+  
+ 
   // TODO: Esta variable es para tener las cards del HTML
   private listCardsHTML: NodeListOf<ChildNode>
   // TODO: Esta variable es para tener el video actual
@@ -38,6 +41,7 @@ export class VideosComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.listCardsHTML = this.contenedorVideos.nativeElement.childNodes
     console.log("Lista de Cards:", this.listCardsHTML);  
+    console.log('Template', this.TemplateBotonVideo);
     
   }
    ngOnInit():void{

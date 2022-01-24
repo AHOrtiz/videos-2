@@ -21,8 +21,8 @@
     #playCardNetflix   (mouseout)="outCardVideo()"></video>
     <div class="card-body "id="netflix">
       <h5 class="card-title" class="text" >{{videos.titulo}}</h5>
-        <button id="btn--block" class="btn btn-info" type="button" (click)="playVideo()"><span class="fa fa-play-circle  fa-1x"></span> Ver video</button>   
-     
+        <!-- <button id="btn--block" class="btn btn-info" type="button" (click)="playVideo()"><span class="fa fa-play-circle  fa-1x"></span> Ver video</button>    -->
+        <app-modal-video></app-modal-video>
     </div>
   </div>  
 
