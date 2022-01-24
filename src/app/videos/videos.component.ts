@@ -48,7 +48,7 @@ export class VideosComponent implements OnInit, AfterViewInit {
       },
       {
         titulo: "video 2 ",
-        url:this.sanitizerURL("https://www.youtube.com/watch?v=EXG54G7Nv8o") 
+        url:("assets/videos/video1.mp4") 
       },
       {
         titulo: "Cambio de sello Mecanico y plato en bomba Himp",
@@ -110,14 +110,12 @@ export class VideosComponent implements OnInit, AfterViewInit {
   {
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
-  public ReduccionVideo(){ 
-    
+  public ReduccionVideo(){     
        
          if(this.ListVideos.length>=5)
          {
           this.ListVideos= this.ListVideos.slice(this.i,5)
-         }      
-           
+         }             
     
   }
 }
