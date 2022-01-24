@@ -3,10 +3,12 @@ import {
   Component,
   ElementRef,
   ViewChild,
+  OnInit
 } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { VideoInterface } from '../interface/video-interface';
 import { DomSanitizer } from '@angular/platform-browser';
+import { throwIfEmpty } from 'rxjs';
 
 @Component({
   selector: 'app-videos',
@@ -15,11 +17,12 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 
 // Aqui se agrego el ciclo del componente (AfterViewInit) el cual se ejecuta cuando termiana de pintar el HTML
-export class VideosComponent implements AfterViewInit {
-  constructor(private modalService: NgbModal, private sanitizer:DomSanitizer) {
-  
-    // this.myTrustedURL=sanitizer.bypassSecurityTrustUrl(this.currentVideo.url)
+export class VideosComponent implements OnInit, AfterViewInit {
+  constructor(private modalService: NgbModal, private sanitizer:DomSanitizer) { }
 
+  ngOnInit():void{
+      
+   this.ListVideos
   }
 
 
@@ -27,20 +30,22 @@ export class VideosComponent implements AfterViewInit {
   //  Aqui se declaro la obtencion del contenedor del HTML
   @ViewChild('contenedorVideos', { static: false }) contenedorVideos: ElementRef<HTMLElement>;
 
-  private  myTrustedURL:string="";
+  private  myTrustedURL:any;
   // TODO: Esta variable es para tener las cards del HTML
   private listCardsHTML: NodeListOf<ChildNode>
   // TODO: Esta variable es para tener el video actual
   public currentVideo: VideoInterface = new VideoInterface() 
+  public ListVideo:any[]=[]  
 
-  public ListVideos = [
+  
+   ListVideos = [
     {
       titulo: "Video 1",
       url: "https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4"
     },
     {
       titulo: "video 2 ",
-      url: "https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4"
+      url:this.sanitizerURL("https://www.youtube.com/watch?v=EXG54G7Nv8o") 
     },
     {
       titulo: "Cambio de sello Mecanico y plato en bomba Himp",
@@ -56,20 +61,25 @@ export class VideosComponent implements AfterViewInit {
     },
     {
       titulo: "Cambio de sello Mecanico y plato en bomba Himp",
-      url: '/assets/videos/video1.mp4'
-    }
+      url: "https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4"
+    },
+    {
+      titulo: "Cambio de sello Mecanico y plato en bomba Himp",
+      url: "https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4"
+    },
+     
   ]
-
+  
   /**
    * Se manda a llamar cuando se finaliza de pintar el HTML (en este caso todos los videos)
    */
   ngAfterViewInit(): void {
     this.listCardsHTML = this.contenedorVideos.nativeElement.childNodes
-    console.log("Lista de Cards:", this.listCardsHTML);
+    console.log("Lista de Cards:", this.listCardsHTML);  
     
   }
-
-
+ 
+  
   public overNetflix(idVideo: number) {
     console.log("mouseover en video: ", idVideo);
 
@@ -100,4 +110,9 @@ export class VideosComponent implements AfterViewInit {
     this.modalService.open(this.modalMensaje);
     console.log('Funciono');
   }
+  private sanitizerURL(url:string):any
+  {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+ 
 }

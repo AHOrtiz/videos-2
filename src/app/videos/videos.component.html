@@ -17,7 +17,7 @@
 
  
   <div *ngFor="let videos of ListVideos; let i=index" class="card netflix" style="width: 18rem; height:19rem;">
-    <video src="{{videos.url}}" (mouseover)="overNetflix(i) "
+    <video [src]="videos.url" *ngIf="videos.url" (mouseover)="overNetflix(i) "
     #playCardNetflix   (mouseout)="outCardVideo()"></video>
     <div class="card-body "id="netflix">
       <h5 class="card-title" class="text" >{{videos.titulo}}</h5>
