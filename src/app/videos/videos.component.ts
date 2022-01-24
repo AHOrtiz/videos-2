@@ -41,7 +41,7 @@ export class VideosComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.listCardsHTML = this.contenedorVideos.nativeElement.childNodes
     console.log("Lista de Cards:", this.listCardsHTML);  
-    console.log('Template', this.TemplateBotonVideo);
+  
     
   }
    ngOnInit():void{
