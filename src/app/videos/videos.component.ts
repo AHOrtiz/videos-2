@@ -8,7 +8,6 @@ import {
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { VideoInterface } from '../interface/video-interface';
 import { DomSanitizer } from '@angular/platform-browser';
-import { throwIfEmpty } from 'rxjs';
 
 @Component({
   selector: 'app-videos',
@@ -20,11 +19,6 @@ import { throwIfEmpty } from 'rxjs';
 export class VideosComponent implements OnInit, AfterViewInit {
   constructor(private modalService: NgbModal, private sanitizer:DomSanitizer) { }
 
-  ngOnInit():void{
-      
-   this.ListVideos
-  }
-
 
   @ViewChild('modalMensaje', { static: false }) modalMensaje: ElementRef;
   //  Aqui se declaro la obtencion del contenedor del HTML
@@ -35,41 +29,9 @@ export class VideosComponent implements OnInit, AfterViewInit {
   private listCardsHTML: NodeListOf<ChildNode>
   // TODO: Esta variable es para tener el video actual
   public currentVideo: VideoInterface = new VideoInterface() 
-  public ListVideo:any[]=[]  
-
-  
-   ListVideos = [
-    {
-      titulo: "Video 1",
-      url: "https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4"
-    },
-    {
-      titulo: "video 2 ",
-      url:this.sanitizerURL("https://www.youtube.com/watch?v=EXG54G7Nv8o") 
-    },
-    {
-      titulo: "Cambio de sello Mecanico y plato en bomba Himp",
-      url: "https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4"
-    },
-    {
-      titulo: "Cambio de sello Mecanico y plato en bomba Himp",
-      url: "https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4"
-    },
-    {
-      titulo: "Cambio de sello Mecanico y plato en bomba Himp",
-      url: "https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4"
-    },
-    {
-      titulo: "Cambio de sello Mecanico y plato en bomba Himp",
-      url: "https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4"
-    },
-    {
-      titulo: "Cambio de sello Mecanico y plato en bomba Himp",
-      url: "https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4"
-    },
-     
-  ]
-  
+  public ListVideos:any[]=[]
+  public i=0
+    
   /**
    * Se manda a llamar cuando se finaliza de pintar el HTML (en este caso todos los videos)
    */
@@ -78,7 +40,41 @@ export class VideosComponent implements OnInit, AfterViewInit {
     console.log("Lista de Cards:", this.listCardsHTML);  
     
   }
- 
+   ngOnInit():void{
+    this.ListVideos= [
+      {
+        titulo: "Video 1",
+        url: "https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4"
+      },
+      {
+        titulo: "video 2 ",
+        url:this.sanitizerURL("https://www.youtube.com/watch?v=EXG54G7Nv8o") 
+      },
+      {
+        titulo: "Cambio de sello Mecanico y plato en bomba Himp",
+        url: "https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4"
+      },
+      {
+        titulo: "Cambio de sello Mecanico y plato en bomba Himp",
+        url: "https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4"
+      },
+      {
+        titulo: "Cambio de sello Mecanico y plato en bomba Himp",
+        url: "https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4"
+      },
+      {
+        titulo: "Cambio de sello Mecanico y plato en bomba Himp",
+        url: "https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4"
+      },
+      {
+        titulo: "Cambio de sello Mecanico y plato en bomba Himp",
+        url: "https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4"
+      },
+       
+    ]
+     this.ReduccionVideo()
+     
+   }
   
   public overNetflix(idVideo: number) {
     console.log("mouseover en video: ", idVideo);
@@ -114,5 +110,14 @@ export class VideosComponent implements OnInit, AfterViewInit {
   {
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
- 
+  public ReduccionVideo(){ 
+    
+       
+         if(this.ListVideos.length>=5)
+         {
+          this.ListVideos= this.ListVideos.slice(this.i,5)
+         }      
+           
+    
+  }
 }
