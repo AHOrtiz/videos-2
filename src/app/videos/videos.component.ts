@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { VideoInterface } from '../interface/video-interface';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-videos',
@@ -16,10 +16,11 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 // Aqui se agrego el ciclo del componente (AfterViewInit) el cual se ejecuta cuando termiana de pintar el HTML
 export class VideosComponent implements AfterViewInit {
-  constructor(private modalService: NgbModal, private sanitizer:DomSanitizer) {
+  constructor(
+    private modalService: NgbModal,
+    private sanitizer:DomSanitizer) {
   
-    // this.myTrustedURL=sanitizer.bypassSecurityTrustUrl(this.currentVideo.url)
-
+   
   }
 
 
@@ -27,7 +28,7 @@ export class VideosComponent implements AfterViewInit {
   //  Aqui se declaro la obtencion del contenedor del HTML
   @ViewChild('contenedorVideos', { static: false }) contenedorVideos: ElementRef<HTMLElement>;
 
-  private  myTrustedURL:string="";
+  private  myTrustedURL:any;
   // TODO: Esta variable es para tener las cards del HTML
   private listCardsHTML: NodeListOf<ChildNode>
   // TODO: Esta variable es para tener el video actual
@@ -40,7 +41,7 @@ export class VideosComponent implements AfterViewInit {
     },
     {
       titulo: "video 2 ",
-      url: "https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4"
+      url: "https://www.youtube.com/watch?v=26xAtkF8h5g&list=RD26xAtkF8h5g&start_radio=1"
     },
     {
       titulo: "Cambio de sello Mecanico y plato en bomba Himp",
@@ -80,8 +81,10 @@ export class VideosComponent implements AfterViewInit {
     console.log("Video encontrado",this.ListVideos[idVideo])
     // TODO: Se inicializa la variable para tener el video actual (en este caso esta variable se ocupa cuando se hace el outCardVideo)
     
+   this.myTrustedURL= this.sanitizerVideo(this.ListVideos[idVideo].url)
+
     this.currentVideo.titulo = this.ListVideos[idVideo].titulo;
-    this.currentVideo.url = this.ListVideos[idVideo].url;
+    this.currentVideo.url = this.myTrustedURL;
     this.currentVideo.html = videoHTML
     this.currentVideo.html.muted = true;
     this.currentVideo.html.play();
@@ -99,5 +102,10 @@ export class VideosComponent implements AfterViewInit {
   public playVideo() {
     this.modalService.open(this.modalMensaje);
     console.log('Funciono');
+  }
+  
+  private sanitizerVideo(url:string):any{
+     return this.sanitizer.bypassSecurityTrustUrl(url)
+ 
   }
 }
