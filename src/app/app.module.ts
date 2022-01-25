@@ -17,6 +17,7 @@ import { ModalVideoComponent } from './modal-video/modal-video.component';
     BrowserModule,   
     NgbModule
   ],
+ 
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -1,17 +1,3 @@
-<h1>Soporte tecnico</h1>
-<h3 class="subtitulo">Videos tutoriales</h3>
-
-<!-- <div *ngIf="videoSeleccionado==0;then listVideos else  tabla"></div>
-<ng-template #listVideos>
-  <div>
-    <label for="">Video 1</label>
-  </div>
-</ng-template>
-<ng-template #tabla>
-  <div>
-    <label for="">video 3</label>
-  </div>
-</ng-template> -->
 
 <div class="contenedor-videos" #contenedorVideos >
 
@@ -22,26 +8,10 @@
     <div class="card-body "id="netflix">
       <h5 class="card-title" class="text" >{{videos.titulo}}</h5>
           
-         <app-modal-video>  <button id="btn--block" class="btn btn-info" type="button" (click)="playVideo()"><span class="fa fa-play-circle  fa-1x"></span> Ver video</button>  </app-modal-video> 
+      <app-modal-video [dataVideo]="videos"> </app-modal-video> 
     </div>
   </div>  
 
+
 </div>
 
-<ng-template #modalMensaje let-modal>
-  <div class="modal-header">
-      <h4 class="modal-title">
-          <span>{{currentVideo.titulo}}</span>
-      </h4>
-      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-          <span aria-hidden="true">&times;</span>
-        </button>
-  </div>
-  <div class="modal-body">
-      <p> <span>Descripcion</span> </p>
-      <video class="videoModal" src="{{currentVideo.url}}" controls></video>
-  </div>
-  <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')" >Cerrar</button>
-  </div>
-</ng-template>   

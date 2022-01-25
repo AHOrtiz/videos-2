@@ -21,17 +21,17 @@ export class VideosComponent implements OnInit, AfterViewInit {
   constructor(private modalService: NgbModal, private sanitizer:DomSanitizer) { }
 
 
-  @ViewChild('modalMensaje', { static: false }) modalMensaje: ElementRef;
+   @ViewChild('modalMensaje', { static: false }) modalMensaje: ElementRef;
   //  Aqui se declaro la obtencion del contenedor del HTML
   @ViewChild('contenedorVideos', { static: false }) contenedorVideos: ElementRef<HTMLElement>;
 
-  @ViewChild('TemplateBotonVideo', { static: true }) TemplateBotonVideo:TemplateRef<any>;
-  
+   
  
   // TODO: Esta variable es para tener las cards del HTML
   private listCardsHTML: NodeListOf<ChildNode>
   // TODO: Esta variable es para tener el video actual
   public currentVideo: VideoInterface = new VideoInterface() 
+  public videoSeleccionado:VideoInterface;
   public ListVideos:any[]=[]
   public i=0
     
@@ -40,10 +40,10 @@ export class VideosComponent implements OnInit, AfterViewInit {
    */
   ngAfterViewInit(): void {
     this.listCardsHTML = this.contenedorVideos.nativeElement.childNodes
-    console.log("Lista de Cards:", this.listCardsHTML);  
-  
+    console.log("Lista de Cards:", this.listCardsHTML);   
     
   }
+  
    ngOnInit():void{
     this.ListVideos= [
       {
@@ -59,15 +59,15 @@ export class VideosComponent implements OnInit, AfterViewInit {
         url: "https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4"
       },
       {
-        titulo: "Cambio de sello Mecanico y plato en bomba Himp",
+        titulo: "Prueba 1",
         url: "https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4"
       },
       {
-        titulo: "Cambio de sello Mecanico y plato en bomba Himp",
+        titulo: "Prueba 2 ",
         url: "https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4"
       },
       {
-        titulo: "Cambio de sello Mecanico y plato en bomba Himp",
+        titulo: "Prueba 3",
         url: "https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4"
       },
       {
@@ -89,10 +89,12 @@ export class VideosComponent implements OnInit, AfterViewInit {
     
     console.log("Video encontrado",this.ListVideos[idVideo])
     // TODO: Se inicializa la variable para tener el video actual (en este caso esta variable se ocupa cuando se hace el outCardVideo)
+        
     
-    this.currentVideo.titulo = this.ListVideos[idVideo].titulo;
-    this.currentVideo.url = this.ListVideos[idVideo].url;
-    this.currentVideo.html = videoHTML
+    this.currentVideo.html=videoHTML;
+    this.currentVideo.url=this.ListVideos[idVideo].url;
+    console.log(this.currentVideo.url)
+    this.currentVideo.titulo=this.ListVideos[idVideo].titulo
     this.currentVideo.html.muted = true;
     this.currentVideo.html.play();
     console.log("video actual", this.currentVideo);
@@ -106,20 +108,21 @@ export class VideosComponent implements OnInit, AfterViewInit {
   /**
    * Abrir una modal cuando seleccionan el icono de reproducir
    */
-  public playVideo() {
-    this.modalService.open(this.modalMensaje);
-    console.log('Funciono');
-  }
-  private sanitizerURL(url:string):any
-  {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
-  }
+  // public playVideo() {
+  //   this.modalService.open(this.modalMensaje);
+  //   console.log('Funciono');
+  // }
+ 
   public ReduccionVideo(){     
        
          if(this.ListVideos.length>=5)
          {
           this.ListVideos= this.ListVideos.slice(this.i,5)
-         }             
+         }    
     
+  }
+
+  public getCurrentVideo(){
+    this.videoSeleccionado=this.currentVideo
   }
 }
