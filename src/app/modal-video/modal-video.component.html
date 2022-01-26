@@ -14,7 +14,9 @@
     </div>
     <div class="modal-body">
         <p><span>Descripcion</span></p>
-        <video id="videoPlayer"  class="videoModal" [src]="currentVideo ? currentVideo.url:''" controls></video>
+        <video id="videoPlayer"  class="videoModal"  [src]="currentVideo?currentVideo.url:'' "  controls>
+            <track  src="assets/videos/SubEsp.vtt" kind="subtitles" srclang="es" label="Español"> 
+        </video>
     </div>
     <div class="modal-footer">
         <button  type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">

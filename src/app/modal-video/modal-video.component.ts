@@ -26,7 +26,7 @@ export class ModalVideoComponent {
       const videoHTML: HTMLVideoElement = document.getElementById('videoPlayer') as HTMLVideoElement
       videoHTML.currentTime=1;
       console.log("El video se reproduce en el segudo ",videoHTML);
-      
+
       this.currentVideo = {
         html: videoHTML,
         url: this.dataVideo.url,

@@ -56,7 +56,7 @@ export class VideosComponent implements OnInit, AfterViewInit {
       },
       {
         titulo: "Cambio de sello Mecanico y plato en bomba Himp",
-        url: "https://codingyaar.com/wp-content/uploads/video-in-bootstrap-card.mp4"
+        url: ("assets/videos/video2.mp4")
       },
       {
         titulo: "Prueba 1",
