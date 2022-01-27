@@ -14,7 +14,7 @@
     </div>
     <div class="modal-body">
         <p><span>Descripcion</span></p>
-        <video *ngIf="currentVideo" class="videoModal"[src]="currentVideo.url" controls></video>
+        <video *ngIf="currentVideo" class="videoModal" [src]="currentVideo.url" controls></video>
     </div>
     <div class="modal-footer">
         <button id="videoPlayer" type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">

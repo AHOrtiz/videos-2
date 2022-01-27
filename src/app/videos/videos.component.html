@@ -2,13 +2,13 @@
 <div class="contenedor-videos" #contenedorVideos >
 
  
-  <div *ngFor="let videos of ListVideos; let i=index" class="card netflix" style="width: 18rem; height:19rem;">
-    <video [src]="videos.url"  (mouseover)="overNetflix(i) "
-    #playCardNetflix   (mouseout)="outCardVideo()"></video>
+  <div *ngFor="let video of ListVideos; let i=index" class="card netflix" style="width: 18rem; height:19rem;">
+    <video [src]="video.url"  (mouseover)="overNetflix(i) "
+    (mouseout)="outCardVideo()"></video>
     <div class="card-body "id="netflix">
-      <h5 class="card-title" class="text" >{{videos.titulo}}</h5>
+      <h5 class="card-title" class="text" >{{video.titulo}}</h5>
           
-      <app-modal-video [dataVideo]="videos"> </app-modal-video> 
+      <app-modal-video [dataVideo]="video"> </app-modal-video> 
     </div>
   </div>  
 

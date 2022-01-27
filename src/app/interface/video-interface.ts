@@ -3,3 +3,8 @@ export class VideoInterface {
     titulo:string;
     url:any;
 }
+
+export class VideosModal{
+    titulo:string;
+    url:string
+}
