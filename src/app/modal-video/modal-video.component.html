@@ -1,12 +1,12 @@
-<div class="container-modal">
-    <button id="btn--block" class="btn btn-info" type="button" (click)="playVideo()"><span
+<div class="container-modal"  >
+    <button id="myVideo" class="btn btn-info" type="button" (click)="playVideo()"><span
             class="fa fa-play-circle  fa-1x" loop="loop"></span> Ver video</button>
 </div>
 
-<ng-template #modalMensaje let-modal>
+<ng-template #modalMensaje let-modal >
     <div class="modal-header">
         <h4 class="modal-title">
-            <span *ngIf="currentVideo">{{ currentVideo.titulo }}</span>
+            <span *ngIf="currentVideo" >{{ currentVideo.titulo }}</span>
         </h4>
         <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
             <span aria-hidden="true">&times;</span>
@@ -14,10 +14,12 @@
     </div>
     <div class="modal-body">
         <p><span>Descripcion</span></p>
-        <video *ngIf="currentVideo" class="videoModal" [src]="currentVideo.url" controls></video>
+        <video id="videoPlayer"  class="videoModal"  [src]="currentVideo?currentVideo.url:'' "  controls>
+            <track  src="assets/videos/SubEsp.vtt" kind="subtitles" srclang="es" label="Español"> 
+        </video>
     </div>
     <div class="modal-footer">
-        <button id="videoPlayer" type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">
+        <button  type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">
             Cerrar
         </button>
     </div>

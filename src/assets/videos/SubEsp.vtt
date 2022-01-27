@@ -1,0 +1,7 @@
+WEBVTT - Videos
+
+STYLE
+::cue{font-size:14; background:#FFA1C9; color:#000000; font-family:Arial;}
+
+01:00.000 --> 02:00.000
+-Texto a mostrar del segundo 01 al segundo 6

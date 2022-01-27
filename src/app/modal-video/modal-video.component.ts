@@ -1,4 +1,4 @@
-import {  Component, ElementRef,  Input,  OnChanges,  ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnChanges, ViewChild } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { VideoInterface, VideosModal } from '../interface/video-interface';
@@ -9,14 +9,16 @@ import { VideosComponent } from '../videos/videos.component';
   templateUrl: './modal-video.component.html',
   styleUrls: ['./modal-video.component.css']
 })
-export class ModalVideoComponent   {
+export class ModalVideoComponent {
 
   constructor(private modalService:NgbModal) { }
   
   @ViewChild('modalMensaje', { static: false }) modalMensaje: ElementRef;  
   @Input() dataVideo:VideosModal;
 
-  public currentVideo:VideoInterface
+ 
+
+  public currentVideo: VideoInterface
 
   /* En esta funcion 
     
@@ -31,7 +33,9 @@ export class ModalVideoComponent   {
     setTimeout(() => {
       //Se obtiene el objeto video que esta adentro de la modal
       const videoHTML: HTMLVideoElement = document.getElementById('videoPlayer') as HTMLVideoElement
-      //Se asignan los valores a currentVideo
+      videoHTML.currentTime=1;
+      console.log("El video se reproduce en el segudo ",videoHTML);
+
       this.currentVideo = {
         html: videoHTML,
         url: this.dataVideo.url,
@@ -39,12 +43,12 @@ export class ModalVideoComponent   {
       }
     }, 100)
 
-    
   }
- 
+
+
 }
 
-  
+
 
 
 
