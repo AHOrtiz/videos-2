@@ -29,8 +29,8 @@ export class ImagesComponent implements OnInit {
         this.urlToBlob(resp).then((newBlob: Blob) => {
       let newUrl = URL.createObjectURL(newBlob)
       this.imagenFire = this.sanitizar(newUrl)
-        })
-       
+      console.log("url sanitizada",this.imagenFire);
+        })       
 
       }
     )
@@ -41,7 +41,8 @@ export class ImagesComponent implements OnInit {
           let ruta = resp[index].url
           let imageurl: string = await new Promise(async (resolve, error) => {
             const blob = new Blob([ruta], { type: 'image/png' });
-            let imgeblob = URL.createObjectURL(blob)
+            let imgeblob = URL.createObjectURL(blob);
+            console.log("url convertida en blob", imgeblob);
             resolve(imgeblob)
           });
           // let blob = await fetch(resp[index].url).then(r => r.blob());
