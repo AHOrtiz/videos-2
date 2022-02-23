@@ -1,4 +1,5 @@
 
+
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { PruebaService } from '../services/prueba.service';
@@ -12,8 +13,10 @@ export class ImagesComponent implements OnInit {
 
   constructor(private imagesService: PruebaService, private readonly sanitizer: DomSanitizer) { }
 
-  public coleccion: any[] = []
+  public coleccion: any[] = [];
+
   public imagenFire: SafeResourceUrl;
+  public urlim: string;
 
   ngOnInit(): void {
     this.imagenes()
@@ -23,37 +26,32 @@ export class ImagesComponent implements OnInit {
     return blob
   }
   private async imagenes() {
-    this.imagesService.dowloadFile().subscribe(
-      async resp => {
-        console.log(resp);
-        this.urlToBlob(resp).then((newBlob: Blob) => {
-      let newUrl = URL.createObjectURL(newBlob)
-      this.imagenFire = this.sanitizar(newUrl)
-      console.log("url sanitizada",this.imagenFire);
-        })       
 
-      }
-    )
+
     this.imagesService.Getimages().subscribe(
       async resp => {
         console.log(resp);
-        for (let index = 0; index <= resp.length - 1; index++) {
+        for (let index = 0; index <= resp.length; index++) {
+          let nombre = resp[index].nombre;
+          console.log(nombre);
           let ruta = resp[index].url
-          let imageurl: string = await new Promise(async (resolve, error) => {
-            const blob = new Blob([ruta], { type: 'image/png' });
-            let imgeblob = URL.createObjectURL(blob);
-            console.log("url convertida en blob", imgeblob);
-            resolve(imgeblob)
-          });
-          // let blob = await fetch(resp[index].url).then(r => r.blob());
-          // let imageUrl=URL.createObjectURL(blob)
+          console.log(ruta);  
+          console.log("La respuesta del servicio es : ", resp);
+              this.urlToBlob(ruta).then((newBlob :Blob)=>{
+                let newurlCifrada = URL.createObjectURL(newBlob);
+                this.imagenFire = this.sanitizar(newurlCifrada)
+                console.log("Ruta sanitizada", this.imagenFire);
+              })        
+         
+            this.imagesService.dowloadFile(nombre).subscribe(
+             resp => {
+              console.log(resp);           
+              
 
-          this.coleccion[index] = {
-            nombre: resp[index].nombre,
-            url: this.sanitizar(imageurl)
-          }
+            }
+          )
         }
-        console.log(this.coleccion)
+
       }
     )
 
