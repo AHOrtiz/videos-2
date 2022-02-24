@@ -2,6 +2,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+
 import { PruebaService } from '../services/prueba.service';
 
 @Component({
@@ -29,24 +30,21 @@ export class ImagesComponent implements OnInit {
 
 
     this.imagesService.Getimages().subscribe(
-      async resp => {
-        console.log(resp);
-        for (let index = 0; index <= resp.length; index++) {
+      async resp => { 
+       
+        for (let index = 0; index <= resp.length -1; index++) {
           let nombre = resp[index].nombre;
-          console.log(nombre);
-          let ruta = resp[index].url
-          console.log(ruta);  
-          console.log("La respuesta del servicio es : ", resp);
-              this.urlToBlob(ruta).then((newBlob :Blob)=>{
-                let newurlCifrada = URL.createObjectURL(newBlob);
-                this.imagenFire = this.sanitizar(newurlCifrada)
-                console.log("Ruta sanitizada", this.imagenFire);
-              })        
-         
-            this.imagesService.dowloadFile(nombre).subscribe(
-             resp => {
-              console.log(resp);           
-              
+          
+            this.imagesService.dowloadFileImageFirabe(nombre).subscribe(
+             async respuesta => {
+                         
+              let blob = await fetch(respuesta).then(result => result.blob());
+              let urlCifrada = URL.createObjectURL(blob);
+              let newurl = this.sanitizar(urlCifrada);
+              this.coleccion.push({
+                nombre : nombre ,
+                url : newurl
+              })
 
             }
           )
